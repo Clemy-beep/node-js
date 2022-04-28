@@ -1,0 +1,140 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Friskies Fraise",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga adipisci exercitationem ad qui vero sunt, placeat, maiores voluptatibus at provident totam vel optio. Minus illo ullam unde numquam deserunt dolore?",
+      "price": 40,
+      "currency": "€",
+      "brand": "Friskies"
+    },
+    {
+      "id": 3,
+      "title": "Friskies chocolat",
+      "description": "ro sunt, placeat, maiores voluptatibus at provident totam vel optio. Minus illo ullam unde numquam deserunt dolore?",
+      "price": 24,
+      "currency": "€",
+      "brand": "Friskies"
+    },
+    {
+      "id": 4,
+      "title": "Wiskas Fleur d'oranger",
+      "description": "g elit. Nulla natus quidem praesentium quae modi voluptate totam numquam quibusdam dolores incidunt vero velit est autem, eaque, rem dignissimos unde, libero laudantium.",
+      "price": 9,
+      "currency": "€",
+      "brand": "Wiskas"
+    },
+    {
+      "id": 5,
+      "title": "Friskies Pomme",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga adipisci exercitationem ad qui vero sunt, placeat, maiores voluptatibus at provident totam vel optio. Minus illo ullam unde numquam deserunt dolore?",
+      "price": 75,
+      "currency": "€",
+      "brand": "Friskies"
+    },
+    {
+      "id": 6,
+      "title": "Friskies Fraise",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga adipisci exercitationem ad qui vero sunt, placeat, maiores voluptatibus at provident totam vel optio. Minus illo ullam unde numquam deserunt dolore?",
+      "price": 1.4,
+      "currency": "€",
+      "brand": "Friskies"
+    },
+    {
+      "id": 7,
+      "title": "Wiskas Grenade",
+      "description": "iat minus sapiente quod et? In consectetur provident consequatur laudantium quas soluta aliquid asperiores",
+      "price": 23,
+      "currency": "€",
+      "brand": "Wiskas"
+    },
+    {
+      "id": 8,
+      "title": "Wiskas vanille",
+      "description": "amet consectetur adipisicing elit. Animi vel dolor delectus a quas porro provident optio aliquid nam rep",
+      "price": 13,
+      "currency": "€",
+      "brand": "Wiskas"
+    },
+    {
+      "id": 9,
+      "title": "Friskies Chorizo",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga adipisci exercitationem ad qui vero sunt, placeat, maiores voluptatibus at provident totam vel optio. Minus illo ullam unde numquam deserunt dolore?",
+      "price": 2.3,
+      "currency": "€",
+      "brand": "Friskies"
+    },
+    {
+      "id": 10,
+      "title": "Friskies tortue",
+      "description": "elit. Impedit maiores fugit, optio officia quasi nam. Magni, maxime eveniet earum du",
+      "price": 23,
+      "currency": "€",
+      "brand": "Friskies"
+    },
+    {
+      "id": 11,
+      "title": "Crunch noisette",
+      "description": "dolor harum iste culpa placeat ducimus l",
+      "price": 32,
+      "currency": "€",
+      "brand": "Crunch"
+    },
+    {
+      "id": 12,
+      "title": "Friskies antilope",
+      "description": "consectetur adipisicing elit. Reiciendis nostrum velit ab quae? Saepe deleniti accusantiu",
+      "price": 66,
+      "currency": "€",
+      "brand": "Friskies"
+    },
+    {
+      "id": 13,
+      "title": "Friskies Fraise",
+      "description": "ium consequatur dolorum reprehenderit dicta at voluptas quidem blanditiis neque distinctio saepe voluptatem quae moll",
+      "price": 98,
+      "currency": "€",
+      "brand": "Friskies"
+    },
+    {
+      "id": 14,
+      "title": "Wiskas poulet",
+      "description": "lor sit amet consectetur adipisicing elit. Velit ",
+      "price": 54,
+      "currency": "€",
+      "brand": "Wiskas"
+    },
+    {
+      "id": 15,
+      "title": "Friskies Abricot",
+      "description": "pore architecto voluptate omnis ",
+      "price": 42,
+      "currency": "€",
+      "brand": "Friskies"
+    },
+    {
+      "title": "Qui delectus error ",
+      "price": 907,
+      "brand": "Sunt quia eveniet ",
+      "description": "Nulla at quis except",
+      "currency": "€",
+      "id": 16
+    },
+    {
+      "title": "Ad sapiente qui elit",
+      "price": 1,
+      "brand": "Placeat tenetur in ",
+      "description": "Harum sit nemo quis",
+      "currency": "€",
+      "id": 17
+    },
+    {
+      "title": "Eligendi sit non fu",
+      "price": 49,
+      "brand": "Maxime laboris dolor",
+      "description": "Recusandae Autem iu",
+      "currency": "€",
+      "id": 18
+    }
+  ]
+}
