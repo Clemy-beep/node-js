@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,8 +17,19 @@
     "url": "https://github.com/Clemy-beep/node-js/issues"
   },
   "homepage": "https://github.com/Clemy-beep/node-js#readme",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "dependencies": {
+    "@prisma/client": "^3.13.0",
     "cors": "^2.8.5",
     "express": "^4.18.0"
-  }
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.29",
+    "prisma": "^3.13.0",
+    "ts-node": "^10.7.0"
+  },
+  "keywords": [],
+  "type": "module"
 }
