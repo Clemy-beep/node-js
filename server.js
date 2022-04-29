@@ -48,12 +48,28 @@ app.post("/add-product", async (req, res) => {
 app.delete("/delete/:id", async (req, res) => {
   const response = await prisma.product.delete({
     where: {
-      id: req.params.id,
+      id: parseInt(req.params.id),
     },
   });
   res.json(response);
 });
 
+app.patch("/edit/:id", async (req, res) => {
+  const { title, description, brand, currency, price } = req.body;
+  const updateProduct = await prisma.product.update({
+    where: {
+      id: parseInt(req.params.id),
+    },
+    data: {
+      title: title,
+      description: description,
+      brand: brand,
+      currency: currency,
+      price: parseInt(price),
+    },
+  });
+  res.json(updateProduct);
+});
 // app.patch("/edit/:id", function (req, res) {
 //   const article = _articles.find((a) => a.id.toString() === req.params.id);
 //   if (!article) return res.status(404).json({ message: "Not Found" });
@@ -70,20 +86,6 @@ app.delete("/delete/:id", async (req, res) => {
 //   writeFile(
 //     "inventory.json",
 //     JSON.stringify({ articles: _articles }),
-//     function (err) {
-//       console.log(err);
-//     }
-//   );
-//   res.send({ message: "Ok" });
-// });
-
-// app.delete("/delete/:id", function (req, res) {
-//   let newInventory = _articles.filter(
-//     (item) => item.id.toString() !== req.params.id.toString()
-//   );
-//   writeFile(
-//     "inventory.json",
-//     JSON.stringify({ articles: newInventory }),
 //     function (err) {
 //       console.log(err);
 //     }
