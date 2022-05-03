@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.mjs"
   },
   "repository": {
     "type": "git",
@@ -18,12 +18,16 @@
   },
   "homepage": "https://github.com/Clemy-beep/node-js#readme",
   "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "seed": "ts-node prisma/seed.cjs"
   },
   "dependencies": {
     "@prisma/client": "^3.13.0",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
-    "express": "^4.18.0"
+    "express": "^4.18.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.4",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@types/node": "^17.0.29",

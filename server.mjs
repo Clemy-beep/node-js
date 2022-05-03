@@ -1,13 +1,16 @@
 import pkg from "@prisma/client";
-
-const { PrismaClient } = pkg;
 import express from "express";
-const app = express();
-const port = 3000;
 import cors from "cors";
 import pkgg from "body-parser";
+import multer from "multer";
+import jsonwebtoken from "jsonwebtoken";
+
+const { PrismaClient } = pkg;
+const app = express();
+const port = 3000;
 const { urlencoded, json } = pkgg;
 const prisma = new PrismaClient();
+const upload = multer({ dest: "./uploads/" });
 
 app.use(express.json());
 app.use(
@@ -70,29 +73,43 @@ app.patch("/edit/:id", async (req, res) => {
   });
   res.json(updateProduct);
 });
-// app.patch("/edit/:id", function (req, res) {
-//   const article = _articles.find((a) => a.id.toString() === req.params.id);
-//   if (!article) return res.status(404).json({ message: "Not Found" });
-//   article.title = req.body.title;
-//   article.price = req.body.price;
-//   article.currency = req.body.currency;
-//   article.brand = req.body.brand;
-//   article.description = req.body.description;
-//   _articles.forEach((element, index) => {
-//     if (element.id === article.id) {
-//       _articles[index] = article;
-//     }
-//   });
-//   writeFile(
-//     "inventory.json",
-//     JSON.stringify({ articles: _articles }),
-//     function (err) {
-//       console.log(err);
-//     }
-//   );
-//   res.send({ message: "Ok" });
-// });
 
+app.post("/signup", upload.single("profilePic"), async (req, res) => {
+  const { email, password, firstName, lastName } = req.body;
+  const profilePic = req.file.filename;
+  const existingUser = await prisma.user.findFirst({
+    where: {
+      email: email,
+    },
+  });
+  if (existingUser) {
+    return res.status(409).json({
+      error: "Existing user",
+      message: "This user is already registered",
+    });
+  }
+  const token = jsonwebtoken.sign(
+    {
+      email,
+    },
+    process.env.TOKEN_KEY,
+    {
+      expiresIn: "2h",
+    }
+  );
+  const response = await prisma.user.create({
+    data: {
+      email,
+      password,
+      firstName,
+      lastName,
+      profilePic,
+      token,
+    },
+  });
+  res.json({ response: response });
+  console.log(req.file);
+});
 app.listen(port, () =>
   console.log(`🚀 Server ready at: http://localhost:${port}!`)
 );

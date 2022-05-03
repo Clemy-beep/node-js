@@ -18,3 +18,13 @@ model Product {
   currency String @db.VarChar(5)
   brand String @db.VarChar(100)
 }
+
+model User {
+  id Int @id@default(autoincrement())
+  email String @unique
+  firstName String @db.VarChar(50)
+  lastName String @db.VarChar(50)
+  password String @db.VarChar(20)
+  profilePic String
+  token String
+}
