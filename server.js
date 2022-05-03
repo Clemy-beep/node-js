@@ -1,14 +1,12 @@
-import pkg from "@prisma/client";
-import express from "express";
-import cors from "cors";
-import pkgg from "body-parser";
-import multer from "multer";
-import jsonwebtoken from "jsonwebtoken";
-
-const { PrismaClient } = pkg;
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const multer = require("multer");
+const jsonwebtoken = require("jsonwebtoken");
+const { PrismaClient } = require("@prisma/client");
 const app = express();
 const port = 3000;
-const { urlencoded, json } = pkgg;
+const { urlencoded, json } = require("body-parser");
 const prisma = new PrismaClient();
 const upload = multer({ dest: "./uploads/" });
 
@@ -108,7 +106,36 @@ app.post("/signup", upload.single("profilePic"), async (req, res) => {
     },
   });
   res.json({ response: response });
-  console.log(req.file);
+});
+
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  if (!(email && password)) {
+    return res.status(400).send("All input required");
+  }
+  const user = await prisma.user.findFirst({
+    where: {
+      email: email,
+    },
+  });
+  if (user && user.password === password) {
+    try {
+      const token = jsonwebtoken.sign({
+        email,
+      });
+      await prisma.user.update({
+        where: {
+          email: email,
+        },
+        data: {
+          token: token,
+        },
+      });
+      res.status(200).json({ token: token });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 });
 app.listen(port, () =>
   console.log(`🚀 Server ready at: http://localhost:${port}!`)
