@@ -10,6 +10,7 @@ const { urlencoded, json } = require("body-parser");
 const prisma = new PrismaClient();
 const upload = multer({ dest: "./uploads/" });
 const auth = require("./middleware/auth");
+const mail = require("./middleware/mailer");
 
 app.use(express.json());
 app.use(
@@ -106,6 +107,7 @@ app.post("/signup", upload.single("profilePic"), async (req, res) => {
       token,
     },
   });
+  mail(email, "New Account", "You created an account on CatFood Store.");
   res.json({ response: response });
 });
 
@@ -138,6 +140,7 @@ app.post("/login", async (req, res) => {
           token: token,
         },
       });
+      mail(email, "New Connection", "You just logged in on CatFood Store.");
       res.status(200).json({ token: token });
     } catch (err) {
       console.log(err);
