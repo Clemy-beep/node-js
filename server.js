@@ -120,9 +120,15 @@ app.post("/login", async (req, res) => {
   });
   if (user && user.password === password) {
     try {
-      const token = jsonwebtoken.sign({
-        email,
-      });
+      const token = jsonwebtoken.sign(
+        {
+          email,
+        },
+        process.env.TOKEN_KEY,
+        {
+          expiresIn: "2h",
+        }
+      );
       await prisma.user.update({
         where: {
           email: email,
