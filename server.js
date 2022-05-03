@@ -9,6 +9,7 @@ const port = 3000;
 const { urlencoded, json } = require("body-parser");
 const prisma = new PrismaClient();
 const upload = multer({ dest: "./uploads/" });
+const auth = require("./middleware/auth");
 
 app.use(express.json());
 app.use(
@@ -17,7 +18,7 @@ app.use(
 app.use(urlencoded({ extended: true }));
 app.use(json());
 
-app.get("/products", async (req, res) => {
+app.get("/products", auth, async (req, res) => {
   const products = await prisma.product.findMany();
   res.json(products);
 });
