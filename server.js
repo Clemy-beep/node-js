@@ -11,6 +11,8 @@ const prisma = new PrismaClient();
 const upload = multer({ dest: "./uploads/" });
 const auth = require("./middleware/auth");
 const mail = require("./middleware/mailer");
+const csv = require("csv-parser");
+const fs = require("fs");
 
 app.use(express.json());
 app.use(
@@ -146,6 +148,36 @@ app.post("/login", async (req, res) => {
       console.log(err);
     }
   }
+});
+
+app.get("/user/:id/profilepic", auth, async (req, res) => {
+  const profilePic = await prisma.user.findFirst({
+    where: {
+      id: parseInt(req.params.id),
+    },
+    select: {
+      profilePic: true,
+    },
+  });
+  res.sendFile(
+    `/home/stagiaire8/Documents/node-js/uploads/${profilePic.profilePic}`
+  );
+  console.log(profilePic);
+});
+
+app.post("/send-file", auth, upload.single("file"), async (req, res) => {
+  const file = req.file;
+  fs.createReadStream(`${file.path}`)
+    .pipe(csv())
+    .on("data", async (data) => {
+      delete data.id;
+      data.price = parseFloat(data.price);
+      let d = await prisma.product.create({
+        data: data,
+      });
+      console.log(d);
+    })
+    .on("end", () => console.log("CSV processed"));
 });
 app.listen(port, () =>
   console.log(`🚀 Server ready at: http://localhost:${port}!`)
