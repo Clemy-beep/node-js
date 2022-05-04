@@ -1,4 +1,6 @@
 const nodemailer = require("nodemailer");
+const fs = require("fs");
+const img = fs.readFileSync("./uploads/téléchargement.jpeg");
 
 const mail = async (receiverMail, subject, text) => {
   let transporter = nodemailer.createTransport({
@@ -6,8 +8,8 @@ const mail = async (receiverMail, subject, text) => {
     port: 465,
     secure: true,
     auth: {
-      user: "alajitest1@pawolanmwen.com",
-      pass: "vabkew-jAdmyg-0hyfty",
+      user: "alajitest2@pawolanmwen.com",
+      pass: "rekqo0-zykpih-Vugkeq",
     },
   });
 
@@ -17,6 +19,12 @@ const mail = async (receiverMail, subject, text) => {
     subject: subject,
     text: text,
     html: `<p>${text}</p>`,
+    attachments: [
+      {
+        filename: "téléchargement.jpeg",
+        content: img,
+      },
+    ],
   });
 
   console.log("Message sent: %s", info.messageId);
